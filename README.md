@@ -1,5 +1,7 @@
 Student Management System
 
+![Home Page] (homepage.png)
+
 A web application to manage student records. You can add, edit, delete, and search students.
 
 Technologies Used

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Managment</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <!-- Sidebar area -->
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-logo">
+          <h2>
+            <span><i class="fas fa-graduation-cap"></i></span>
+            Student Managment
+          </h2>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-link active">
+            <i class="fas fa-home"></i> Dashboard</a
+          >
+          <a href="#" class="nav-link">
+            <i class="fas fa-users"></i> Students
+          </a>
+          <a href="#" class="nav-link">
+            <i class="fas fa-plus"></i> Add Student
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <p>&copy; 2026</p>
+          <p>All rights reserved</p>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Top Navbar -->
+
+        <header class="topbar">
+          
+          <button id="hamburgerBtn" class="hamburger">
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <h3 class="topbar-title">Student Management</h3>
+
+          <div class="admin-profile">
+            <img src="images/user.jpg" alt="Admin" />
+            <span>Admin</span>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+
+        <main class="page-content">
+
+          <div class="page-header">
+            <div>
+              <h1>Students</h1>
+              <p>View and manage all students.</p>
+            </div>
+            <button class="btn-primary">+ Add Student</button>
+          </div>
+
+          <div class="table-controls">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search by name or email or phone"
+            />
+
+          </div>
+
+          <table class="student-info">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Course</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody class="tableBody"></tbody>
+          </table>
+
+          <p class="table-footer-text">Showing 1 to 2 of 2 students</p>
+
+           <!-- Edit Form -->
+
+        <div id="editCard" class="edit-student-card" style="display: none;">
+            <h2>Edit Student</h2>
+            
+            <form action="" id="editForm" class="student-form">
+              <input type="hidden" name="studentId">
+
+              <div class="form-row">
+
+                <div class="form-group">
+                  <label>Full Name</label>
+                  <input type="text" name="fullName" />
+                </div>
+
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" name="email" />
+                </div>
+
+                <div class="form-group">
+                  <label>Phone</label>
+                  <input type="phone" name="phone" />
+                </div>
+              </div>
+
+              <div class="form-row">
+
+                <div class="form-group">
+                  <label>Course</label>
+                  <select name="course">
+                    <option value="">Select Course</option>
+                    <option value="BS Computer Science">
+                      BS Computer Science
+                    </option>
+                    <option value="BS Software Engineering">
+                      BS Software Engineering
+                    </option>
+                    <option value="BS IT">BS IT</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" id="address" name="address" />
+                </div>  
+              </div>
+
+              <button type="submit" class="btn-primary">Update Student</button>
+              <button type="button" id="cancelEdit" class="btn-cancel">Cancel</button>
+            </form>
+
+          </div>
+            
+          <!-- Add Student Form -->
+
+          <div class="add-student-card">
+            <h2>Add New Student</h2>
+            <form action="" id="studentForm" class="student-form">
+
+              <div class="form-row">
+
+                <div class="form-group">
+                  <label for="fullName">Full Name</label>
+                  <input type="text" id="fullName" name="fullName" />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="phone" id="phone" name="phone" />
+                </div>
+              </div>
+
+
+              <div class="form-row">
+
+                <div class="form-group">
+                  <label>Course</label>
+                  <select name="course">
+                    <option value="">Select Course</option>
+                    <option value="BS Computer Science">
+                      BS Computer Science
+                    </option>
+                    <option value="BS Software Engineering">
+                      BS Software Engineering
+                    </option>
+                    <option value="BS IT">BS IT</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" id="address" name="address" />
+                </div>
+              </div>
+
+              <button type="submit" class="btn-primary">+ Add Student</button>
+              
+            </form>
+          </div>
+        </main>
+      </div>
+     </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

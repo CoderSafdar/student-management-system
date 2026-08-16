@@ -63,7 +63,9 @@
               <h1>Students</h1>
               <p>View and manage all students.</p>
             </div>
-            <button class="btn-primary">+ Add Student</button>
+            <button class="btn-primary">
+              <a href="#submitForm" class="nav-link">+ Add Student</a>
+              </button>
           </div>
 
           <div class="table-controls">
@@ -123,13 +125,10 @@
                   <label>Course</label>
                   <select name="course">
                     <option value="">Select Course</option>
-                    <option value="BS Computer Science">
-                      BS Computer Science
-                    </option>
-                    <option value="BS Software Engineering">
-                      BS Software Engineering
-                    </option>
+                    <option value="BS Computer Science"> BS Computer Science </option>                                          
+                    <option value="BS Software Engineering"> BS Software Engineering </option>                    
                     <option value="BS IT">BS IT</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -146,7 +145,7 @@
             
           <!-- Add Student Form -->
 
-          <div class="add-student-card">
+          <div class="add-student-card" id="submitForm">
             <h2>Add New Student</h2>
             <form action="" id="studentForm" class="student-form">
 
@@ -175,13 +174,10 @@
                   <label>Course</label>
                   <select name="course">
                     <option value="">Select Course</option>
-                    <option value="BS Computer Science">
-                      BS Computer Science
-                    </option>
-                    <option value="BS Software Engineering">
-                      BS Software Engineering
-                    </option>
+                    <option value="BS Computer Science"> BS Computer Science </option>  
+                    <option value="BS Software Engineering"> BS Software Engineering </option>                   
                     <option value="BS IT">BS IT</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
 

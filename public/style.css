@@ -145,7 +145,7 @@ body {
 }
 
 .student-info th {
-  background-color: lightgray;
+  background-color: rgb(207, 205, 205);
   text-align: center;
 }
 
@@ -155,8 +155,13 @@ body {
   border-bottom: 1px solid #eee;
 }
 
-.student-info td {
+.tableBody tr {
     text-align: left;
+    cursor: pointer;
+}
+
+.student-info tr:hover{
+  background-color: lightgray;
 }
 
 .btn-edit {

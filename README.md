@@ -1,5 +1,4 @@
-Student Management System
-
+# Student Management System
 
 A web application to manage student records. You can add, edit, delete, and search students.
 
@@ -17,27 +16,47 @@ Features
 - Search students
 - Responsive design for mobile devices
 
-How to Run This Project
+Screenshot
 
-1. Clone the repository
+### Homepage
+![Homepage](public/images/homepage.png)
 
-git clone https://github.com/CoderSafdar/student-management-system.git
 
-2. Go to the project folder
+## How to Run
 
-cd student-managmnt-system
+1. Clone the repository and enter the folder:
 
-3. Install dependencies
+   ```bash
+   git clone <your-github-repository-url>
+   cd student-management-system
+   ```
 
-npm install
+2. Install dependencies:
 
-4. Start the server
+   ```bash
+   npm install
+   ```
 
-nodemon server.js
+3. Create a `.env` file in the project root:
 
-5. Open in browser
+   ```env
+   PORT=3000
+   MONGO_URI=your_mongodb_connection_string
+   ```
 
-http://localhost:3000
+4. Start the server:
+
+   ```bash
+   npm start
+   ```
+
+   For development with automatic restart, use `npm run dev`.
+
+5. Open in browser:
+
+   http://localhost:3000
+
+`npm test` runs JavaScript syntax checks for the application files.
 
 Author
 

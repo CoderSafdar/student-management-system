@@ -13,11 +13,11 @@ async function connectDB() {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     console.log("Database is running");
-  } catch {
-    console.log("Database is not responding");
+  } catch (err) {
+    console.log("Database is not responding:", err.message);
   }
-}
-connectDB();
+} connectDB()
+
 
 app.use("/api/students", studentRoutes);
 

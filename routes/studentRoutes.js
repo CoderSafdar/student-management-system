@@ -1,4 +1,3 @@
-
 const express = require("express");
 const router = express.Router();
 const Student = require("../models/Student");
@@ -16,7 +15,7 @@ router.get("/", async (req, res) => {
 // POST - naya student add
 router.post("/", async (req, res) => {
   try {
-    const { fullName , email, phone, course, address } = req.body;
+    const { fullName, email, phone, course, address } = req.body;
     await Student.create({ fullName, email, phone, course, address });
     res.json({ success: true });
   } catch (err) {
@@ -29,7 +28,10 @@ router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { fullName, email, phone, course, address } = req.body;
-    await Student.updateOne({ _id: id }, { fullName, email, phone, course, address });
+    await Student.updateOne(
+      { _id: id },
+      { fullName, email, phone, course, address },
+    );
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ error: "Failed to update student" });

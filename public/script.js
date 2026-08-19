@@ -7,14 +7,13 @@ hamburgerBtn.addEventListener("click", () => {
   sidebar.classList.toggle("show");
 });
 
-
 // ===== Search filter  =====
 
 const searchInput = document.querySelector(".search-input");
 searchInput.addEventListener("input", () => {
   let inputValue = searchInput.value.toLowerCase();
   let tableBody = document.querySelector(".tableBody");
-  
+
   tableBody.querySelectorAll("tr").forEach((tr) => {
     let tableData = tr.textContent.toLowerCase();
     if (tableData.includes(inputValue)) {
@@ -25,7 +24,6 @@ searchInput.addEventListener("input", () => {
   });
 });
 
-     
 // ===== Student Management =====
 
 let allStudents = [];
@@ -35,9 +33,6 @@ const studentForm = document.getElementById("studentForm");
 const editForm = document.getElementById("editForm");
 const editCard = document.getElementById("editCard");
 const cancelEdit = document.getElementById("cancelEdit");
-
-
-
 
 // 1) Get Student -> Get
 
@@ -50,7 +45,7 @@ async function loadStudents() {
     allStudents = data;
     tableBody.innerHTML = "";
     data.forEach((s, index) => {
-    tableBody.innerHTML += `
+      tableBody.innerHTML += `
       <tr>
         <td>${index + 1}</td>
         <td>${s.fullName}</td>
@@ -62,8 +57,8 @@ async function loadStudents() {
           <button class="btn-delete" data-id="${s._id}">🗑 Delete</button>
         </td>
       </tr>`;
-  });
-  attachRowEvents();
+    });
+    attachRowEvents();
   } catch (err) {
     console.log("Error loading students");
   }
@@ -84,7 +79,7 @@ studentForm.addEventListener("submit", async (e) => {
     await fetch("/api/students", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fullName, email, phone, course, address })
+      body: JSON.stringify({ fullName, email, phone, course, address }),
     });
     studentForm.reset();
     loadStudents();
@@ -93,7 +88,7 @@ studentForm.addEventListener("submit", async (e) => {
   }
 });
 
-// 3) Edit + Delete buttons -> dynamic events 
+// 3) Edit + Delete buttons -> dynamic events
 
 function attachRowEvents() {
   document.querySelectorAll(".btn-edit").forEach((btn) => {
@@ -114,7 +109,9 @@ function attachRowEvents() {
   document.querySelectorAll(".btn-delete").forEach((btn) => {
     btn.addEventListener("click", async () => {
       const id = btn.dataset.id;
-      const confirmDelete = confirm("Are you sure you want to delete this student?");
+      const confirmDelete = confirm(
+        "Are you sure you want to delete this student?",
+      );
       if (confirmDelete) {
         try {
           await fetch(`/api/students/${id}`, { method: "DELETE" });
@@ -142,7 +139,7 @@ editForm.addEventListener("submit", async (e) => {
     await fetch(`/api/students/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fullName, email, phone, course , address})
+      body: JSON.stringify({ fullName, email, phone, course, address }),
     });
     editCard.style.display = "none";
     loadStudents();

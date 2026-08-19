@@ -7,7 +7,6 @@ hamburgerBtn.addEventListener("click", () => {
   sidebar.classList.toggle("show");
 });
 
-
 function getStudentData(form) {
   const formData = new FormData(form);
   return {
@@ -15,7 +14,7 @@ function getStudentData(form) {
     email: formData.get("email").trim().toLowerCase(),
     phone: formData.get("phone").trim(),
     course: formData.get("course").trim(),
-    address: formData.get("address").trim()
+    address: formData.get("address").trim(),
   };
 }
 
@@ -28,8 +27,7 @@ const editCard = document.getElementById("editCard");
 const cancelEdit = document.getElementById("cancelEdit");
 const searchInput = document.querySelector(".search-input");
 
-let allStudents = []; // search filter 
-
+let allStudents = []; // search filter
 
 loadStudents();
 
@@ -46,12 +44,12 @@ async function loadStudents() {
 
 function renderTable(students) {
   tableBody.innerHTML = "";
-  
+
   if (students.length === 0) {
     tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding: 20px;">Not Student Found.</td></tr>`;
     return;
   }
-  
+
   students.forEach((s, index) => {
     tableBody.innerHTML += `
       <tr>
@@ -66,14 +64,15 @@ function renderTable(students) {
         </td>
       </tr>`;
   });
-  attachRowEvents(); 
+  attachRowEvents();
 }
 
 // 2) Add Student -> POST
 
 studentForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const { fullName, email, phone, course, address } = getStudentData(studentForm);
+  const { fullName, email, phone, course, address } =
+    getStudentData(studentForm);
 
   // Validation
   if (!validateForm(fullName, email, phone, course, address)) {
@@ -84,7 +83,7 @@ studentForm.addEventListener("submit", async (e) => {
     const res = await fetch("/api/students", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fullName, email, phone, course, address })
+      body: JSON.stringify({ fullName, email, phone, course, address }),
     });
 
     if (!res.ok) {
@@ -101,7 +100,7 @@ studentForm.addEventListener("submit", async (e) => {
   }
 });
 
-// 3) Edit + Delete buttons -> dynamic events 
+// 3) Edit + Delete buttons -> dynamic events
 
 function attachRowEvents() {
   document.querySelectorAll(".btn-edit").forEach((btn) => {
@@ -130,17 +129,17 @@ function attachRowEvents() {
     btn.addEventListener("click", async () => {
       const id = btn.dataset.id;
       const student = allStudents.find((s) => s._id === id);
-      
+
       const confirmDelete = confirm(`${student.fullName} ko delete karna hai?`);
       if (confirmDelete) {
         try {
           const res = await fetch(`/api/students/${id}`, { method: "DELETE" });
-          
+
           if (!res.ok) {
             showAlert("Delete nahi ho saka!", "error");
             return;
           }
-          
+
           showAlert("✅ Student delete ho gya!", "success");
           loadStudents();
         } catch (err) {
@@ -167,7 +166,7 @@ editForm.addEventListener("submit", async (e) => {
     const res = await fetch(`/api/students/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fullName, email, phone, course , address})
+      body: JSON.stringify({ fullName, email, phone, course, address }),
     });
 
     if (!res.ok) {
@@ -188,12 +187,12 @@ cancelEdit.addEventListener("click", () => {
   editCard.style.display = "none";
 });
 
-// 5) Search filter 
+// 5) Search filter
 
 searchInput.addEventListener("input", () => {
   const value = searchInput.value.toLowerCase();
   const filtered = allStudents.filter((s) =>
-    (s.fullName + s.email + s.phone).toLowerCase().includes(value)
+    (s.fullName + s.email + s.phone).toLowerCase().includes(value),
   );
   renderTable(filtered);
 });

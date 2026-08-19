@@ -16,8 +16,8 @@ async function connectDB() {
   } catch (err) {
     console.log("Database is not responding:", err.message);
   }
-} connectDB()
-
+}
+connectDB();
 
 app.use("/api/students", studentRoutes);
 
